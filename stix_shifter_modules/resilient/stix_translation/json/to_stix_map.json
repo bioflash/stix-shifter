@@ -80,6 +80,9 @@
   "Url": {
     "key": "url.value"
   },
+  "MacAddr": {
+    "key": "mac-addr.value"
+  },
   "FileName": {
     "key": "file.name"
   },

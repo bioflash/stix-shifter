@@ -34,17 +34,26 @@ class ResultsTranslator(BaseResultTranslator):
 
     def transformRecords(self, record):
         value = record['value']
+        type = record['type']
 
         result = {"RelatedCaseCount": record['related_incident_count'],
                   "LastRelatedCase": record['last_related_inc_id'],
                   "FirstRelatedCase": record['first_related_inc_id']}
-        if record['type'] == 2:
+        if type == 2:
             result['DomainName'] = value
-        elif record['type'] == 1:
+        elif type == 1:
             try:
                 ipaddress.IPv6Address(value)
                 result["IPV6Addr"] = value
             except:
                 result["IPV4Addr"] = value
+        elif type == 3:
+            result['Url'] = value
+        elif type == 12:
+            result['FileName'] = value
+        elif type == 23:
+            result['UserName'] = value
+        elif type == 39:
+            result['MacAddr'] = value
 
         return  result
