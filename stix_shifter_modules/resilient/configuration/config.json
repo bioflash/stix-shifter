@@ -37,6 +37,9 @@
             "password": {
                 "type": "password"
             }
+        },
+        "orgId": {
+            "type": "number"
         }
     }
 }

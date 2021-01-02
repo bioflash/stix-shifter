@@ -20,7 +20,7 @@ class QueryStringPatternTranslator:
     # Change comparator values to match with supported data source operators
     comparator_lookup = {
         ComparisonExpressionOperators.And: "AND",
-        ComparisonExpressionOperators.Or: "OR",
+        ComparisonExpressionOperators.Or: ",",
         ComparisonComparators.GreaterThan: ">",
         ComparisonComparators.GreaterThanOrEqual: ">=",
         ComparisonComparators.LessThan: "<",
@@ -112,7 +112,10 @@ class QueryStringPatternTranslator:
                     continue
                 comparison_string += parsed_reference
             else:
-                comparison_string += "{mapped_field} {comparator} {value}".format(mapped_field=mapped_field, comparator=comparator, value=value)
+                comparison_string += "\"conditions\":[{{\"field_name\":\"type\", \"method\":\"equals\", \"value\":{mapped_field} }}, {{\"field_name\":\"value\", \"method\":\"equals\", \"value\":{value} }}]".format(mapped_field=mapped_field, comparator=comparator, value=value.replace("'", "\""))
+                #comparison_string += "{{\"field_name\"=\"type\", \"method\"=\"equals\", \"value\"={mapped_field} }}, {{\"field_name\"=\"value\", \"method\"=\"equals\", \"value\"={value} }}".format(mapped_field=mapped_field, comparator=comparator, value=value)
+
+            #comparison_string += "{mapped_field} {comparator} {value}".format(mapped_field=mapped_field, comparator=comparator, value=value)
 
             if (mapped_fields_count > 1):
                 comparison_string += " OR "
@@ -231,4 +234,5 @@ def translate_pattern(pattern: Pattern, data_model_mapping, options):
     # If supported by the query language, a limit on the number of results should be added to the query as defined by options['result_limit'].
     # Translated patterns must be returned as a list of one or more native query strings.
     # A list is returned because some query languages require the STIX pattern to be split into multiple query strings.
-    return ["SELECT * FROM tableName WHERE %s" % query]
+    #return ["SELECT * FROM tableName WHERE %s" % query]
+    return ["{{\"filters\":[{{ {query} }}]}}".format(query=query)]

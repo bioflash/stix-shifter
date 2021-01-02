@@ -1,27 +1,27 @@
 {
   "ipv4-addr": {
     "fields": {
-      "value": ["SourceIpV4-dialect1", "DestinationIpV4-dialect1"]
+      "value": [1]
     }
   },
   "ipv6-addr": {
     "fields": {
-      "value": ["SourceIpV6-dialect1", "DestinationIpV6-dialect1"]
+      "value": [1]
     }
   },
   "url": {
     "fields": {
-      "value": ["Url-dialect1"]
+      "value": [3]
     }
   },
   "mac-addr": {
     "fields": {
-      "value": ["SourceMac-dialect1", "DestinationMac-dialect1"]
+      "value": [39]
     }
   },
   "file": {
     "fields": {
-      "name": ["FileName-dialect1"]
+      "name": [12]
     }
   },
   "network-traffic": {
@@ -37,7 +37,7 @@
   },
   "user-account": {
     "fields": {
-      "user_id": ["UserName-dialect1"]
+      "user_id": [23]
     }
   },
   "artifact": {
@@ -47,7 +47,7 @@
   },
   "domain-name": {
     "fields": {
-      "value": ["DomainName-dialect1"]
+      "value": [2]
     }
   }
 }

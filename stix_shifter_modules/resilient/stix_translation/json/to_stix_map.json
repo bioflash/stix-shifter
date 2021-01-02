@@ -10,6 +10,12 @@
     "key": "x__custom_property.magnitude",
     "cybox": false
   },
+  "IPV4Addr": {
+    "key": "ipv4-addr.value"
+  },
+  "IPV6Addr": {
+    "key": "ipv6-addr.value"
+  },
   "SourceIpV4": [
     {
       "key": "ipv4-addr.value",
@@ -111,5 +117,17 @@
         "key": "process.id"
       }
     ]
+  },
+  "RelatedCaseCount": {
+    "key": "x_related_cases.count",
+    "cybox": false
+  },
+  "LastRelatedCase": {
+    "key": "x_related_cases.last_case_id",
+    "cybox": false
+  },
+  "FirstRelatedCase": {
+    "key": "x_related_cases.first_case_id",
+    "cybox": false
   }
 }
